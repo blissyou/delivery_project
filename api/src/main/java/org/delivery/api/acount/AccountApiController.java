@@ -5,6 +5,7 @@ import org.delivery.api.acount.model.AccountMeResponse;
 import org.delivery.api.common.api.Api;
 import org.delivery.api.common.error.ErrorCode;
 import org.delivery.api.common.error.UserErrorCode;
+import org.delivery.api.common.exception.ApiException;
 import org.delivery.db.account.AccountEntity;
 import org.delivery.db.account.AccountRepository;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,16 @@ public class AccountApiController {
                 .email("me@mail.com")
                 .registrationAt(LocalDateTime.now())
                 .build();
-        return Api.ok(response);
+
+        var str = "안녕하세요";
+        var age= 0;
+        try{
+            Integer.parseInt(str);
+        }catch(Exception e){
+            throw new ApiException(ErrorCode.SERVER_ERROR, e , "사용자 호출 에러");
+        }
+        return Api.OK(response);
+
     }
 
     //test code
@@ -40,6 +50,6 @@ public class AccountApiController {
                 .registrationAt(LocalDateTime.now())
                 .build();
 
-        return Api.ok(response);
+        return Api.OK(response);
     }
 }

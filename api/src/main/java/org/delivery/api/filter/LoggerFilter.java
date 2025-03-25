@@ -1,4 +1,4 @@
-package org.delivery.api.config.jpa.filter;
+package org.delivery.api.filter;
 
 
 import jakarta.servlet.*;
@@ -20,7 +20,7 @@ public class LoggerFilter implements Filter {
 
         var req = new ContentCachingRequestWrapper((HttpServletRequest) Request);
         var res = new ContentCachingResponseWrapper((HttpServletResponse) Response);
-
+        log.info("INIT URI: {}",req.getRequestURI());
         Chain.doFilter(req, res);
 
         // request 정보
