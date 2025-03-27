@@ -1,11 +1,14 @@
 package org.delivery.db.user;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.delivery.db.user.enums.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-interface UserRepository extends JpaRepository<userEntity,Long>{
+import java.util.Optional;
 
+
+public interface UserRepository extends JpaRepository<UserEntity,Long>{
+
+    Optional<UserEntity> findFirstByIdAndStatusOrderByIdDesc(Long userId, UserStatus status);
+
+    Optional<UserEntity> findFirstByEmailAndPasswordAndStatusOrderByIdDesc(String email, String password, UserStatus status);
 }

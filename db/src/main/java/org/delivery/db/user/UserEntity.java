@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.delivery.db.BaseEntity;
+import org.delivery.db.user.enums.UserStatus;
 
 import java.time.LocalDateTime;
 
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @SuperBuilder
 @Data
-public class userEntity extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
     @Column(length=50,nullable=false)
     private String name;
@@ -27,7 +28,7 @@ public class userEntity extends BaseEntity {
 
     @Column(length=50,nullable=false)
     @Enumerated(EnumType.STRING)
-    private String status;
+    private UserStatus status;
 
     @Column(length=150,nullable=false)
     private String address;
