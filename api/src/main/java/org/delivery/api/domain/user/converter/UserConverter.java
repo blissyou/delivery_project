@@ -1,5 +1,6 @@
 package org.delivery.api.domain.user.converter;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.RequiredArgsConstructor;
 import org.delivery.api.common.annotation.Converter;
 import org.delivery.api.common.error.ErrorCode;
@@ -11,6 +12,7 @@ import org.delivery.db.user.UserEntity;
 import java.util.Optional;
 
 @RequiredArgsConstructor
+@Hidden
 @Converter
 public class UserConverter {
 
